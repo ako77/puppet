@@ -12,7 +12,9 @@ class puppet {
 
   file { '/etc/vim/vimrc':
     source  => 'puppet:///modules/puppet/vimrc',
-    mode    => '0755',
+    mode    => '0644',
+    owner   => 'root',
+    group   => 'root',
   }
 
   #file { '/home/ubuntu/.ssh/id_rsa':
