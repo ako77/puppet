@@ -7,4 +7,14 @@ class accounts {
     realname => 'System Operator',
     pass     => '',
   }
+  @accounts::virtual { 'sysop' :
+    uid      => 1002,
+    realname => 'System Operator',
+    pass     => '',
+  }
+  @accounts::virtual { 'mku' :
+    uid      => 1003,
+    realname => 'Markus Künstler',
+    pass     => '',
+  }
 }
