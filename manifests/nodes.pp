@@ -1,3 +1,5 @@
-node 'cmmaster', 'lnx-01' {
+node 'cmmaster' {
 include puppet
+#	users { sysadmins: }
+
 }
