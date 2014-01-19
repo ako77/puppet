@@ -417,8 +417,8 @@ mysql_database { 'information_schema':
 }
 mysql_database { 'mysql':
   ensure  => 'present',
-  charset => 'latin1',
-  collate => 'latin1_swedish_ci',
+  charset => 'utf8',
+  collate => 'utf8_general_ci',
 }
 ```
 

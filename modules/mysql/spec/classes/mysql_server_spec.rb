@@ -145,14 +145,14 @@ describe 'mysql::server' do
     describe 'with databases' do
       let(:params) {{:databases => {
         'somedb' => {
-          'charset' => 'latin1',
-          'collate' => 'latin1',
+          'charset' => 'utf8',
+          'collate' => 'utf8',
         },
         'somedb2' => {}
       }}}
       it { should contain_mysql_database('somedb').with(
-        :charset => 'latin1',
-        :collate => 'latin1'
+        :charset => 'utf8',
+        :collate => 'utf8'
       )}
       it { should contain_mysql_database('somedb2')}
     end

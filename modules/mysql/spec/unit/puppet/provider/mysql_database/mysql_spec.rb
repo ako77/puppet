@@ -18,8 +18,8 @@ test
 
   let(:resource) { Puppet::Type.type(:mysql_database).new(
     { :ensure   => :present,
-      :charset  => 'latin1',
-      :collate  => 'latin1_swedish_ci',
+      :charset  => 'utf8',
+      :collate  => 'utf8_general_ci',
       :name     => 'new_database',
       :provider => described_class.name
     }
@@ -31,7 +31,7 @@ test
     Puppet::Util.stubs(:which).with('mysql').returns('/usr/bin/mysql')
     File.stubs(:file?).with('/root/.my.cnf').returns(true)
     provider.class.stubs(:mysql).with([defaults_file, '-NBe', 'show databases']).returns('new_database')
-    provider.class.stubs(:mysql).with([defaults_file, '-NBe', 'show variables like "%_database"', 'new_database']).returns("character_set_database latin1\ncollation_database latin1_swedish_ci\nskip_show_database OFF")
+    provider.class.stubs(:mysql).with([defaults_file, '-NBe', 'show variables like "%_database"', 'new_database']).returns("character_set_database utf8\ncollation_database utf8_general_ci\nskip_show_database OFF")
   end
 
   let(:instance) { provider.class.instances.first }
@@ -40,7 +40,7 @@ test
     it 'returns an array of databases' do
       provider.class.stubs(:mysql).with([defaults_file, '-NBe', 'show databases']).returns(raw_databases)
       raw_databases.each_line do |db|
-        provider.class.stubs(:mysql).with([defaults_file, '-NBe', 'show variables like "%_database"', db.chomp]).returns("character_set_database latin1\ncollation_database  latin1_swedish_ci\nskip_show_database  OFF")
+        provider.class.stubs(:mysql).with([defaults_file, '-NBe', 'show variables like "%_database"', db.chomp]).returns("character_set_database utf8\ncollation_database  utf8_general_ci\nskip_show_database  OFF")
       end
       databases = provider.class.instances.collect {|x| x.name }
       parsed_databases.should match_array(databases)
@@ -89,7 +89,7 @@ test
 
   describe 'charset' do
     it 'returns a charset' do
-      instance.charset.should == 'latin1'
+      instance.charset.should == 'utf8'
     end
   end
 
@@ -103,7 +103,7 @@ test
 
   describe 'collate' do
     it 'returns a collate' do
-      instance.collate.should == 'latin1_swedish_ci'
+      instance.collate.should == 'utf8_general_ci'
     end
   end
 

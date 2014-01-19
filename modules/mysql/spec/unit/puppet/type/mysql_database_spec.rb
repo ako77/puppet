@@ -3,7 +3,7 @@ require 'puppet/type/mysql_database'
 describe Puppet::Type.type(:mysql_database) do
 
   before :each do
-    @user = Puppet::Type.type(:mysql_database).new(:name => 'test', :charset => 'utf8', :collate => 'utf8_blah_ci')
+    @user = Puppet::Type.type(:mysql_database).new(:name => 'test', :charset => 'utf8', :collate => 'utf8_general_ci')
   end
 
   it 'should accept a database name' do
@@ -11,13 +11,13 @@ describe Puppet::Type.type(:mysql_database) do
   end
 
   it 'should accept a charset' do
-    @user[:charset] = 'latin1'
-    @user[:charset].should == 'latin1'
+    @user[:charset] = 'utf8'
+    @user[:charset].should == 'utf8'
   end
 
   it 'should accept a collate' do
-    @user[:collate] = 'latin1_swedish_ci'
-    @user[:collate].should == 'latin1_swedish_ci'
+    @user[:collate] = 'utf8_general_ci'
+    @user[:collate].should == 'utf8_general_ci'
   end
 
   it 'should require a name' do
