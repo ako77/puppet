@@ -59,4 +59,8 @@ node 'lnx-03' {
     host        => 'localhost',
     grant       => ['ALL'],
   }
+  class { '::mysql::bindings':
+    php_enable => 1,
+    perl_enable => 1
+  }
 }
