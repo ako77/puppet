@@ -42,7 +42,6 @@ node 'lnx-03' {
   class { 'ntp':
     servers => [ '192.168.10.254', 'ntp1.ptb.de', 'ntp2.ptb.de' ],
   }
-  class { 'mysql': }
   class { '::mysql::server':
     root_password    => 'strongpassword',
     override_options => { 'mysqld' => { 'max_connections' => '100', 'query_cache_size' => '64M' } }
