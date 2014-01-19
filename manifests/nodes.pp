@@ -39,9 +39,9 @@ node 'lnx-02' {
       "php5-xcache",
       "php5-mcrypt",
       "php5-xmlrpc",
-      "php5-xsl"
-      "php5-imagick"
-      "php5-mysql"
+      "php5-xsl",
+      "php5-imagick",
+      "php5-mysql",
     ],
     withppa      => true
   }
