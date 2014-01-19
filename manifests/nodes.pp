@@ -17,6 +17,7 @@ node 'cmmaster', 'lnx-01' {
 
 node 'lnx-02' {
   include puppet
+  include apt
   include sudoers
   include accounts
   realize (Accounts::Virtual['ead', 'sysop', 'mku'])
