@@ -10,12 +10,12 @@ class puppet {
     mode    => '0755',
   }
 
-  file { '/etc/vim/vimrc':
-    source  => 'puppet:///modules/puppet/vimrc',
-    mode    => '0644',
-    owner   => 'root',
-    group   => 'root',
-  }
+#  file { '/etc/vim/vimrc':
+#    source  => 'puppet:///modules/puppet/vimrc',
+#    mode    => '0644',
+#    owner   => 'root',
+#    group   => 'root',
+#  }
 
   #file { '/home/ubuntu/.ssh/id_rsa':
     #source  => 'puppet:///modules/puppet/ubuntu.priv',
@@ -29,5 +29,9 @@ class puppet {
     command => '/usr/local/bin/pull-updates',
     minute  => '*/5',
     hour    => '*',
+  }
+
+  exec { "change vimrc":
+    command => "/usr/bin/sudo /bin/sed -i 's/\"set background=dark/set background=dark/g' /etc/vim/vimrc",
   }
 }
