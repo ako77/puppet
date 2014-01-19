@@ -42,4 +42,21 @@ node 'lnx-03' {
   class { 'ntp':
     servers => [ '192.168.10.254', 'ntp1.ptb.de', 'ntp2.ptb.de' ],
   }
+
+  class { '::mysql::server':
+    config_hash => { root_password => 'strongpassword' },
+    override_options => { 'mysqld' => { 'max_connections' => '1024' } }
+  }
+  database_user { 'zabbix@localhost':
+    password_hash   => mysql_password('zabbix')
+  }
+  database_grant { 'zabbix@localhost/*':
+    privileges  => ['ALL'],
+  }
+  mysql::db { 'zabbix':
+    user        => 'zabbix',
+    password    => 'zabbix',
+    host        => 'localhost',
+    grant       => ['ALL'],
+  } 
 }
