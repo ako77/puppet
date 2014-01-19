@@ -58,7 +58,7 @@ node 'lnx-02' {
     fpm_allowed_clients => ''
   }
   ### Configure Nginx site
-  nginxphp::nginx_addphpconfig { 'cmmaster.kitenet.loc':
+  nginxphp::nginx_addphpconfig { 'lnx-02.kitenet.loc':
     website_root       => "/var/www/",
     default_controller => "index.php",
     require => Nginxphp::Fpmconfig['ubuntu']
