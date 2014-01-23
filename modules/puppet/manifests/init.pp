@@ -24,7 +24,7 @@ class puppet {
   #}
 
   cron { 'run-puppet':
-    ensure  => 'present',
+    ensure  => 'absent',
     user    => 'ubuntu',
     command => '/usr/local/bin/pull-updates',
     minute  => '*/15',
