@@ -4,7 +4,7 @@ node 'cmmaster' {
   include puppet
   include sudoers
   include accounts
-  realize (Accounts::Virtual['ead', 'sysop', 'mku'])
+  realize (Accounts::Virtual['ead', 'sysop', 'mku', 'ubuntu'])
   exec { 'Run arbitrary command' :
     command => '/bin/echo Ok, last ran papply on `/bin/date` > /tmp/command.output.txt',
   }

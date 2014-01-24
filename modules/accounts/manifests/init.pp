@@ -2,6 +2,15 @@
 #
 class accounts {
 
+  @accounts::virtual { 'ubuntu' :
+    uid        => 1000,
+    realname   => 'System Operator',
+    pass       => '$6$uz2FWMAEGCpD91SJ$aFub4P9h8O.nBpeGc3vtFUcGMqU9PpPiyN9KGcPzCktBxx2bZ1Wxi.zxsrKLkPX5205JO0x9op1si2SruvHnB0',
+    sshkeytype => 'ssh-rsa',
+    sshkey     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQD7LDYeZRR6tdynb6PCBm3h4eShTZb0RTsHpmfF5NmXejbgNWpBjqQrJDY0dqch73jkVjjoUolwT9UZrV6WJrYrzjb2wsgWNo3Yl4yUH/B11kLwok8PkyHdgptY6ZLNJ1ZKBw48BFwQekKNme/9TC1MmZtsYpmOtQ/CWvcH+WGn5vZ38gSLbvRkR91lRqchGnXDp9+oGUsiLXqBa6sbe9ATsx5AjiAg9jAFx+9BJudgxR+Aloht6O6Zg5QRS/6ziIXq6qQclm7aROhVndnLetQ5/hCf0SZgdu/YZ+Aer7ys7C9WINwRjuUSqVdy/CSSlq6qsByidhaDV+sfTD4c7047',
+    #require    => Class['accounts::config'],
+  }
+ 
   @accounts::virtual { 'ead' :
     uid        => 1001,
     realname   => 'System Operator',
