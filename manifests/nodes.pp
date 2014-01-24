@@ -57,8 +57,8 @@ node 'lnx-03' inherits cmmaster {
     host        => 'localhost',
     grant       => ['ALL'],
   }
-  class { '::mysql::bindings':
-    php_enable  => 0,
-    perl_enable => 1,
-  }
+#  class { '::mysql::bindings':
+#    php_enable  => 0,
+#    perl_enable => 0,
+#  }
 }
