@@ -22,11 +22,9 @@ node 'lnx-01' inherits cmmaster {
 
 node 'lnx-02' inherits cmmaster {
 class { 'nginx': }
-  nginx::resource::vhost { 'kitenet.loc' :
-    www_root        => '/var/www/kitenet.loc',
-    template_header => 'puppet:///modules/nginx/header.erb',
+  nginx::vhost { 'kitenet.loc' :
+    docroot        => '/var/www/kitenet.loc',
   }
-
 }
 
 
