@@ -21,11 +21,6 @@ node 'lnx-01' inherits cmmaster {
 #==============================================================================
 
 node 'lnx-02' inherits cmmaster {
-  class { 'nginx': }
-  nginx::resource::vhost { 'cmmaster.kitenet.loc' :
-    ensure    => present,
-    www_root  => '/var/www/cmmaster.kitenet.loc',
-  }
 }
 
 
